@@ -32,7 +32,7 @@
           <button id="exportApprovedBtn">Export approved JSON bundle</button>
           <button id="buildCsvBtn">Generate research CSV</button>
           <div class="menu-sep"></div>
-          <button class="danger-text" id="clearDbBtn">Clear local database</button>
+          <button class="danger-text" id="clearSessionBtn">Clear current session</button>
         </div>
       </div>
     </div>
@@ -44,12 +44,12 @@
   <input hidden type="file" id="workspaceInput" accept=".json,application/json">
 
   <div class="statusbar" role="status" aria-live="polite">
-    <div class="status-item"><span class="dot" id="dbDot"></span><span id="dbStatus">Opening IndexedDB…</span></div>
+    <div class="status-item"><span class="dot ok" id="dbDot"></span><span id="dbStatus">Session-only memory · refresh clears data</span></div>
     <div class="status-item" id="masterStatus">Master CSV: not loaded</div>
     <div class="status-item" id="sourceStatus">Source TXTs: 0 loaded</div>
-    <div class="status-item" id="backupStatus">Backup: never</div>
-    <div class="status-item" id="storageStatus">Storage: checking…</div>
-    <div class="status-item push" id="saveStatus">Saved</div>
+    <div class="status-item" id="backupStatus">Workspace export: none</div>
+    <div class="status-item" id="storageStatus">Storage: memory only</div>
+    <div class="status-item push" id="saveStatus">Session only</div>
   </div>
 
   <main class="app-shell">

@@ -12,15 +12,15 @@ First read, in this order:
 
 Then inspect the existing application and run the regression tests before editing anything.
 
-This is already a functioning architecture. Do **not** replace it with React, a backend, cloud storage, external APIs, or a different framework. The user wants a simple zero-cost GitHub Pages application using local patient JSON files and IndexedDB.
+This is already a functioning architecture. Do **not** replace it with React, a backend, cloud storage, external APIs, or a different framework. The user wants a simple zero-cost GitHub Pages application using local patient JSON files and a session-only in-memory workspace.
 
 Your role is to polish and improve the current app while preserving:
 
 - 113-field schema compatibility
 - legacy + V2 JSON import compatibility
 - client-only patient data handling
-- IndexedDB refresh-safe persistence
-- manual clear-database control
+- intentional refresh/close data clearing
+- manual clear-session control
 - optional master CSV
 - evidence-first human review
 - strict human approval validation

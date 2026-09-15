@@ -2,7 +2,7 @@
 
 ## Project purpose
 
-This is a **static, client-only GitHub Pages review application** for human verification of AI-extracted Acute Liver Failure research variables. It is not the clinical extractor. It receives structured patient JSONs, lets the researcher compare proposed answers against source-faithful evidence, stores work locally in IndexedDB, creates human-approved snapshots, and deterministically generates research CSV output.
+This is a **static, client-only GitHub Pages review application** for human verification of AI-extracted Acute Liver Failure research variables. It is not the clinical extractor. It receives structured patient JSONs, lets the researcher compare proposed answers against source-faithful evidence, holds the current workspace in memory only, creates human-approved snapshots, and deterministically generates research CSV output.
 
 ## Non-negotiable architecture
 
@@ -19,13 +19,13 @@ This is a **static, client-only GitHub Pages review application** for human veri
 
 ## Current data model
 
-Browser IndexedDB database: `ALFReviewDB`, version 1.
+Session-only in-memory state. Refreshing the page or closing the tab clears the workspace. No patient data is written to IndexedDB or another browser database.
 
-Stores:
+Session collections:
 - `patients` — editable draft state, keyed by `patient_id`
 - `approved` — approved snapshots, keyed by `patient_id`
 - `sources` — optional source TXT content, keyed by `source_file`
-- `meta` — optional master CSV and future app metadata
+- `meta` — optional master CSV and session metadata
 - `audit` — local edit/approval history
 
 ## Input compatibility

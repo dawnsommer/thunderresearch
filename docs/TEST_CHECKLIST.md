@@ -12,10 +12,10 @@ node --check js/app.js
 
 ## Fresh app
 
-- Open site with empty IndexedDB.
+- Open site with a fresh browser session.
 - Empty-state import button works.
 - No console errors.
-- Status bar reports IndexedDB active.
+- Status bar reports session-only memory and refresh-clears-data behavior.
 - Master CSV shows not loaded.
 
 ## Patient import
@@ -27,13 +27,13 @@ node --check js/app.js
 - Duplicate patient import asks before replacement.
 - Unknown/missing/duplicate schema headings are rejected.
 
-## Persistence
+## Session lifecycle
 
 - Edit an answer.
 - Refresh page.
-- Edit remains.
-- Status change remains.
-- Imported patient list remains.
+- Imported patients, edits, statuses, and loaded sources are cleared.
+- Explicit workspace export produces a downloadable JSON file.
+- Explicit workspace import restores data into the current session only.
 
 ## Review filters
 
@@ -64,21 +64,21 @@ node --check js/app.js
 - Approved patient becomes read-only.
 - Reopen returns it to editable pending state and removes approved snapshot.
 
-## Workspace backup
+## Workspace export/import
 
 - Export workspace.
-- Backup status updates after export and remains visible after refresh.
+- Workspace export status updates during the current session.
 - Audit history shows local import/edit/status/approval events for the selected patient.
-- Clear database.
+- Clear current session.
 - Confirm app becomes empty.
 - Import workspace backup.
-- Patients, approvals, source TXT, master CSV and audit state are restored.
+- Patients, approvals, source TXT, master CSV and audit state are restored for the current session.
 
 ## Master CSV
 
 - Load `tests/fixtures/master.csv`.
 - Invalid/nonmatching CSV is rejected.
-- Master persists after refresh.
+- Master clears after refresh.
 - Generate research CSV with approved patients.
 - Existing synthetic row is preserved.
 - Approved patient rows are appended.

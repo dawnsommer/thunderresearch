@@ -8,8 +8,8 @@ The user explicitly chose:
 - GitHub Pages/static web app instead of localhost/server hosting
 - manual patient JSON import
 - optional manual master CSV import
-- IndexedDB persistence to protect against accidental refresh
-- an easy manual command to clear the local browser database
+- session-only in-memory state that intentionally clears on refresh/close
+- an easy manual command to clear the current session
 - eventual regeneration of the Codex/Claude extraction projects to emit the preferred JSON format
 
 ## Current implementation
@@ -25,15 +25,14 @@ The user explicitly chose:
 - Evidence immediately below answer
 - Optional source TXT import + evidence context viewer/search
 
-### Persistence
-- IndexedDB database `ALFReviewDB`
-- Drafts auto-save during editing
-- Approved snapshot store
-- Optional loaded source TXTs persisted
-- Optional master CSV persisted
-- Audit events persisted
-- Workspace backup export/import
-- Two-confirmation Clear local database action
+### Session state
+- Drafts auto-save during the current session
+- Approved snapshot store exists only in memory
+- Optional loaded source TXTs exist only in memory
+- Optional master CSV exists only in memory
+- Audit events exist only in memory
+- Workspace export/import is explicit file-based session transfer
+- Clear current session action
 - Explicit light/dark theme toggle with local preference persistence
 
 ### Approval
@@ -54,7 +53,7 @@ The user explicitly chose:
 - No analytics
 - No external CDNs
 - No fetch/XHR network access (`connect-src 'none'`)
-- Patient files are read with browser File API and stored only in IndexedDB unless the user explicitly downloads/export files
+- Patient files are read with the browser File API and held only in memory unless the user explicitly downloads/exports files
 
 ## Key files
 
@@ -62,7 +61,7 @@ The user explicitly chose:
 - `styles.css` — responsive desktop/iPad UI
 - `js/schema.js` — frozen 113-field schema/mappings
 - `js/core.js` — pure normalization, validation, source-context, CSV parsing/building
-- `js/idb.js` — IndexedDB persistence
+- `js/idb.js` — session-memory storage compatibility module (no IndexedDB)
 - `js/app.js` — UI and workflow controller
 - `schema/field_schema.csv/json` — canonical schema source
 - `tests/test_core.js` — Node regression tests for pure logic
@@ -85,7 +84,7 @@ Do not implement blindly; inspect the app first.
 
 ## Known boundaries
 
-- IndexedDB survives refresh/reopen but can theoretically be evicted by browser storage policy; workspace export is the durable backup.
+- Refresh/reopen intentionally clears the in-memory workspace; workspace export is the only way to keep a copy.
 - No multi-user synchronization; intentionally single-browser/local state.
 - No backend means approvals are local until exported.
 - Source TXT matching expects JSON `source_file` to match the imported TXT filename.

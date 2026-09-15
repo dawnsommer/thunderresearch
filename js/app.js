@@ -41,30 +41,19 @@
       state.master=masterRec||null;
       state.audit=audit.sort((a,b)=>String(b.timestamp||'').localeCompare(String(a.timestamp||'')));
       state.lastBackupAt=backupRec?.value||null;
-      els.dbDot.classList.add('ok'); els.dbStatus.textContent='IndexedDB active';
+      els.dbDot.classList.add('ok'); els.dbStatus.textContent='Session-only memory · refresh clears data';
       refreshStatus();
       if(state.patients.length){state.selected=state.patients[0].patient_id;renderAll();} else renderAll();
-    }catch(e){els.dbDot.classList.add('bad');els.dbStatus.textContent='IndexedDB unavailable';showMessage('Storage error',`<p>${esc(e.message)}</p><p>The app requires IndexedDB for refresh-safe persistence.</p>`);}
+    }catch(e){els.dbDot.classList.add('bad');els.dbStatus.textContent='Session initialization failed';showMessage('Session error',`<p>${esc(e.message)}</p><p>Reload ThunderResearch to start a new session.</p>`);}
   }
 
   function refreshStatus(){
     els.masterStatus.textContent=state.master?`Master CSV: ${state.master.name}`:'Master CSV: not loaded';
     els.sourceStatus.textContent=`Source TXTs: ${state.sources.size} loaded`;
-    els.backupStatus.textContent=state.lastBackupAt?`Backup: ${fmtTime(state.lastBackupAt)}`:'Backup: never';
+    els.backupStatus.textContent=state.lastBackupAt?`Workspace export: ${fmtTime(state.lastBackupAt)}`:'Workspace export: none';
     const total=state.patients.length, approved=state.approved.size, pending=Math.max(0,total-approved);
     els.cohortSummary.textContent=`${total} loaded · ${approved} approved · ${pending} pending`;
-    updateStorageStatus();
-  }
-
-  async function updateStorageStatus(){
-    if(!navigator.storage?.estimate){els.storageStatus.textContent='Storage: local browser';return;}
-    try{
-      const estimate=await navigator.storage.estimate();
-      if(estimate.usage==null||estimate.quota==null){els.storageStatus.textContent='Storage: local browser';return;}
-      const used=estimate.usage<1024*1024?`${Math.max(1,Math.round(estimate.usage/1024))} KB`:`${(estimate.usage/1024/1024).toFixed(1)} MB`;
-      const percent=estimate.quota?Math.round(estimate.usage/estimate.quota*100):0;
-      els.storageStatus.textContent=`Storage: ${used} used${percent?` · ${percent}% of quota`:''}`;
-    }catch{els.storageStatus.textContent='Storage: local browser';}
+    els.storageStatus.textContent='Storage: memory only';
   }
 
   function renderAll(){refreshStatus();renderPatientList();renderPatient();}
@@ -193,7 +182,7 @@
         if(raw.format==='alf-review-workspace-v1'){errors.push(`${file.name}: this is a workspace backup; use Import workspace backup.`);continue;}
         const p=C.canonicalizeDraft(raw,file.name); const existing=state.patients.find(x=>x.patient_id===p.patient_id);
         if(existing){
-          const ok=confirm(`${p.patient_id} already exists in local storage. Replace the draft? Existing approval, if any, will be removed.`); if(!ok)continue;
+          const ok=confirm(`${p.patient_id} already exists in this session. Replace the draft? Existing approval, if any, will be removed.`); if(!ok)continue;
           await DB.del('approved',p.patient_id);state.approved.delete(p.patient_id);replaced++;
         }else added++;
         await DB.put('patients',p);await recordAudit({patient_id:p.patient_id,type:'import',file_name:file.name});
@@ -207,7 +196,7 @@
 
   async function importSources(files){
     let n=0;for(const file of files){const rec={source_file:file.name,text:await file.text(),loaded_at:now()};await DB.put('sources',rec);state.sources.set(file.name,rec);n++;}
-    refreshStatus();renderPatient();toast(`Loaded ${n} source TXT file${n===1?'':'s'} into IndexedDB.`,'success');
+    refreshStatus();renderPatient();toast(`Loaded ${n} source TXT file${n===1?'':'s'} into the current session.`,'success');
   }
 
   async function importMaster(file){
@@ -238,9 +227,9 @@
   function exportCurrent(){const p=selectedPatient();if(!p)return;const obj=isApproved(p.patient_id)?state.approved.get(p.patient_id):C.exportPatient(p,false);download(`${p.patient_id}_${isApproved(p.patient_id)?'approved':'review'}.json`,JSON.stringify(obj,null,2));}
   function exportApprovedBundle(){const pats=[...state.approved.values()].sort((a,b)=>C.naturalCompare(a.patient_id,b.patient_id));if(!pats.length){toast('No approved patients to export.','error');return;}download('ThunderResearch_Approved_Patients.json',JSON.stringify({format:'alf-approved-bundle-v1',schema_version:C.SCHEMA.schema_version,exported_at:now(),patients:pats},null,2));}
 
-  async function exportWorkspace(){const bundle=await DB.exportAll();const backupAt=bundle.exported_at;download(`ThunderResearch_Workspace_${new Date().toISOString().slice(0,10)}.json`,JSON.stringify(bundle,null,2));state.lastBackupAt=backupAt;await DB.put('meta',{key:'lastWorkspaceExportAt',value:backupAt});refreshStatus();toast('Workspace backup exported.','success');}
+  async function exportWorkspace(){const bundle=await DB.exportAll();const backupAt=bundle.exported_at;download(`ThunderResearch_Workspace_${new Date().toISOString().slice(0,10)}.json`,JSON.stringify(bundle,null,2));state.lastBackupAt=backupAt;await DB.put('meta',{key:'lastWorkspaceExportAt',value:backupAt});refreshStatus();toast('Session workspace exported.','success');}
   async function importWorkspace(file){
-    try{const obj=JSON.parse(await file.text());if(!confirm('Importing a workspace backup will replace the current local database. Continue?'))return;await DB.importAll(obj,{replace:true});state.selected=null;await loadFromDB();toast('Workspace restored.','success');}catch(e){showMessage('Workspace import failed',`<p>${esc(e.message)}</p>`);}
+    try{const obj=JSON.parse(await file.text());if(!confirm('Importing a workspace will replace the current session. Continue?'))return;await DB.importAll(obj,{replace:true});state.selected=null;await loadFromDB();toast('Workspace loaded for this session.','success');}catch(e){showMessage('Workspace import failed',`<p>${esc(e.message)}</p>`);}
   }
 
   function buildCsv(){
@@ -254,10 +243,9 @@
     }catch(e){showMessage('CSV generation failed',`<p>${esc(e.message)}</p>`);}
   }
 
-  async function clearDatabase(){
-    if(!confirm('Clear ALL locally stored ThunderResearch data from this browser? This includes patient drafts, approvals, source TXTs, master CSV, and audit history.'))return;
-    if(!confirm('This cannot be undone unless you exported a workspace backup. Clear the local database now?'))return;
-    await DB.clearAll();state.patients=[];state.approved.clear();state.sources.clear();state.master=null;state.audit=[];state.lastBackupAt=null;state.selected=null;renderAll();toast('Local database cleared.','success');
+  async function clearSession(){
+    if(!confirm('Clear all ThunderResearch data in the current session? This includes patient drafts, approvals, source TXTs, master CSV, and audit history.'))return;
+    await DB.clearAll();state.patients=[];state.approved.clear();state.sources.clear();state.master=null;state.audit=[];state.lastBackupAt=null;state.selected=null;renderAll();toast('Current session cleared.','success');
   }
 
   function focusFieldCard(card){
@@ -304,7 +292,7 @@
   function bindGlobal(){
     updateThemeToggle();els.themeToggle.onclick=()=>setTheme(currentTheme()==='dark'?'light':'dark');
     $('importJsonBtn').onclick=$('emptyImportBtn').onclick=()=>els.jsonInput.click();$('importTxtBtn').onclick=()=>els.txtInput.click();$('importMasterBtn').onclick=()=>els.masterInput.click();
-    $('exportWorkspaceBtn').onclick=()=>{closeMenu();exportWorkspace();};$('importWorkspaceBtn').onclick=()=>{closeMenu();els.workspaceInput.click();};$('exportApprovedBtn').onclick=()=>{closeMenu();exportApprovedBundle();};$('buildCsvBtn').onclick=()=>{closeMenu();buildCsv();};$('clearDbBtn').onclick=()=>{closeMenu();clearDatabase();};
+    $('exportWorkspaceBtn').onclick=()=>{closeMenu();exportWorkspace();};$('importWorkspaceBtn').onclick=()=>{closeMenu();els.workspaceInput.click();};$('exportApprovedBtn').onclick=()=>{closeMenu();exportApprovedBundle();};$('buildCsvBtn').onclick=()=>{closeMenu();buildCsv();};$('clearSessionBtn').onclick=()=>{closeMenu();clearSession();};
     els.jsonInput.onchange=e=>{importPatientFiles([...e.target.files]);e.target.value='';};els.txtInput.onchange=e=>{importSources([...e.target.files]);e.target.value='';};els.masterInput.onchange=e=>{if(e.target.files[0])importMaster(e.target.files[0]);e.target.value='';};els.workspaceInput.onchange=e=>{if(e.target.files[0])importWorkspace(e.target.files[0]);e.target.value='';};
     $('moreBtn').onclick=()=>{const m=$('moreMenu');m.classList.toggle('hidden');$('moreBtn').setAttribute('aria-expanded',String(!m.classList.contains('hidden')));};document.addEventListener('click',e=>{if(!e.target.closest('.menu-wrap'))closeMenu();});
     function drag(e){e.preventDefault();if(e.dataTransfer?.files?.length&&[...e.dataTransfer.files].every(f=>f.name.toLowerCase().endsWith('.json')))importPatientFiles([...e.dataTransfer.files]);}
@@ -326,7 +314,7 @@
       if(e.key==='ArrowLeft'){e.preventDefault();movePatient(-1);}
       if(e.key==='ArrowRight'){e.preventDefault();movePatient(1);}
     });
-    window.addEventListener('beforeunload',()=>setSaved('Saved in IndexedDB'));
+    window.addEventListener('beforeunload',()=>setSaved('Session data clears on refresh'));
   }
   function closeMenu(){$('moreMenu').classList.add('hidden');$('moreBtn').setAttribute('aria-expanded','false');}
 

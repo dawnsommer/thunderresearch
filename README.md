@@ -12,9 +12,9 @@ The GitHub repository contains **only application code and the frozen 113-field 
 - No analytics
 - No CDN dependencies
 - `connect-src 'none'` Content Security Policy
-- IndexedDB persistence across refresh/reopen
+- Session-only in-memory workspace; refresh/close clears patient data
 - Explicit light/dark theme toggle with local preference persistence
-- Manual **Clear local database** command
+- Manual **Clear current session** command
 - Optional source TXT loading for context review
 - Optional master CSV loading for exact final-sheet compilation
 
@@ -36,13 +36,13 @@ The GitHub repository contains **only application code and the frozen 113-field 
    - With a master CSV: preserves the master structure and appends approved patient rows deterministically.
    - Without a master CSV: generates a schema-only 113-column CSV.
 
-## Refresh-safe storage
+## Session-only storage
 
-The app stores drafts, approved snapshots, source TXTs, optional master CSV, and audit history in browser IndexedDB (`ALFReviewDB`). A normal refresh or browser restart should not lose the working state.
+Drafts, approved snapshots, source TXTs, the optional master CSV, and audit history exist only in the current browser tab session. Refreshing the page or closing the tab clears them; nothing is written to IndexedDB or another browser database.
 
-IndexedDB is local browser storage, not a formal backup. Use **More → Export workspace backup** periodically. The exported workspace can be restored with **Import workspace backup**.
+Use **More → Export workspace backup** if you want an explicit local JSON file before leaving. **Import workspace backup** loads that file into the current session only.
 
-To remove all local research data from the browser, use **More → Clear local database**. It requires two confirmations.
+Use **More → Clear current session** to remove the current in-memory workspace immediately.
 
 ## Input JSON
 
