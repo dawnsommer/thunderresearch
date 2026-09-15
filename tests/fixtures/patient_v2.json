@@ -1,0 +1,1251 @@
+{
+  "format": "alf-extraction-v2",
+  "schema_version": "1.0",
+  "patient_id": "ALF-TEST-0002",
+  "source_file": "ALF-TEST-0002.txt",
+  "fields": [
+    {
+      "research_heading": "Patient ID",
+      "proposed_answer": "ALF-TEST-0002",
+      "status": "ok",
+      "evidence": [
+        {
+          "location": "filename",
+          "text": "ALF-TEST-0002.txt"
+        }
+      ]
+    },
+    {
+      "research_heading": "Admission date",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Age at presentation (years)",
+      "proposed_answer": "40",
+      "status": "ok",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture age: 40 years."
+        }
+      ]
+    },
+    {
+      "research_heading": "Sex",
+      "proposed_answer": "Male",
+      "status": "ok",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture sex: male."
+        }
+      ]
+    },
+    {
+      "research_heading": "Adult/Pediatric",
+      "proposed_answer": "Adult",
+      "status": "ok",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture age is adult."
+        }
+      ]
+    },
+    {
+      "research_heading": "ALF etiology category",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Specific etiology",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Acetaminophen/paracetamol",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Drug-induced liver injury",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Viral hepatitis A",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Viral hepatitis B",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Viral hepatitis C",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Viral hepatitis E",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "HIV",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Other viral cause",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Autoimmune hepatitis",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Wilson disease",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Ischemic/shock liver",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Pregnancy-related ALF",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Malignant/infiltrative",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Other/indeterminate",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Etiology confirmed?",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Date/time of symptom onset",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Date/time of hospital presentation",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Date/time of ALF diagnosis",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Encephalopathy grade at presentation",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Highest encephalopathy grade",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "INR at presentation",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Peak INR",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Total bilirubin at presentation",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Peak total bilirubin",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "ALT at presentation",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Peak ALT",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "AST at presentation",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Peak AST",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Creatinine at presentation",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Peak creatinine",
+      "proposed_answer": "1.9",
+      "status": "review",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "[L120-L122] \"Creatinine 1.9\""
+        }
+      ]
+    },
+    {
+      "research_heading": "Lactate at presentation",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Peak lactate",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Ammonia at presentation",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Peak ammonia",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Glucose at presentation",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Lowest glucose",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Acidosis present",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Cerebral edema",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Acute kidney injury",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Need for renal replacement therapy",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Mechanical ventilation",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Vasopressor requirement",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "NAC dose/duration",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Antiviral therapy given",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Steroids for AIH given",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Chelation/other Wilson treatment given",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Antibiotics given",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Cerebral edema treatment given",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Plasma exchange/TPE performed",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Transplant evaluation performed",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Date transplant evaluation started",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Listed for transplant",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Contraindication to transplant",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Reason not listed",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Transplant eligibility at any point",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Transferred/referred for transplant",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Transfer delay documented",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Time from listing to transplant (hours)",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Received liver transplant",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Transplant type",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Reason transplant not performed",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Spontaneous/native liver survival",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Survived without transplant",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Death without transplant",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Death after transplant",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Graft survival",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Post-transplant complications",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Overall survival",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "30-day survival",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "90-day survival",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Hospital survival",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Length of hospital stay (days)",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "ICU admission",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "ICU length of stay (days)",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Discharge destination",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Readmission",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Death occurred",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Date of death",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Primary cause of death",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Secondary cause/contributor",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Cerebral edema/herniation",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Sepsis/septic shock",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Multiorgan failure",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Cardiovascular collapse",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Respiratory failure",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Hemorrhage",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Renal failure",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Other cause of death",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Days from symptom onset to presentation",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Days from presentation to ALF diagnosis",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Days from diagnosis to transplant evaluation",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Days from diagnosis to listing",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Days from diagnosis to transplant",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Days from diagnosis to death",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Clinical deterioration before transplant",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Clinical improvement before transplant",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Spontaneous recovery documented",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Vital status at last follow-up",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Date of last follow-up",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "King's College Criteria met",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "MELD score at presentation",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Highest MELD score",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "MELD-Na at presentation",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "Highest MELD-Na",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "ALFSG Index (if available)",
+      "proposed_answer": "NR",
+      "status": "nr",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Synthetic fixture: no explicit value supplied."
+        }
+      ]
+    },
+    {
+      "research_heading": "PELD score at presentation (pediatric, if applicable)",
+      "proposed_answer": "N/A",
+      "status": "na",
+      "evidence": [
+        {
+          "location": "fixture",
+          "text": "Adult patient; PELD not applicable."
+        }
+      ]
+    }
+  ]
+}

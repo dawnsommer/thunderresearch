@@ -1,0 +1,114 @@
+﻿order,research_heading,master_column_index_zero_based,master_column_number_one_based,master_excel_column
+1,Patient ID,0,1,A
+2,Admission date,1,2,B
+3,Age at presentation (years),2,3,C
+4,Sex,3,4,D
+5,Adult/Pediatric,4,5,E
+6,ALF etiology category,6,7,G
+7,Specific etiology,7,8,H
+8,Acetaminophen/paracetamol,8,9,I
+9,Drug-induced liver injury,9,10,J
+10,Viral hepatitis A,10,11,K
+11,Viral hepatitis B,11,12,L
+12,Viral hepatitis C,12,13,M
+13,Viral hepatitis E,13,14,N
+14,HIV,14,15,O
+15,Other viral cause,15,16,P
+16,Autoimmune hepatitis,16,17,Q
+17,Wilson disease,17,18,R
+18,Ischemic/shock liver,18,19,S
+19,Pregnancy-related ALF,19,20,T
+20,Malignant/infiltrative,20,21,U
+21,Other/indeterminate,21,22,V
+22,Etiology confirmed?,22,23,W
+23,Date/time of symptom onset,24,25,Y
+24,Date/time of hospital presentation,25,26,Z
+25,Date/time of ALF diagnosis,26,27,AA
+26,Encephalopathy grade at presentation,27,28,AB
+27,Highest encephalopathy grade,28,29,AC
+28,INR at presentation,29,30,AD
+29,Peak INR,30,31,AE
+30,Total bilirubin at presentation,31,32,AF
+31,Peak total bilirubin,32,33,AG
+32,ALT at presentation,33,34,AH
+33,Peak ALT,34,35,AI
+34,AST at presentation,35,36,AJ
+35,Peak AST,36,37,AK
+36,Creatinine at presentation,37,38,AL
+37,Peak creatinine,38,39,AM
+38,Lactate at presentation,39,40,AN
+39,Peak lactate,40,41,AO
+40,Ammonia at presentation,41,42,AP
+41,Peak ammonia,42,43,AQ
+42,Glucose at presentation,43,44,AR
+43,Lowest glucose,44,45,AS
+44,Acidosis present,45,46,AT
+45,Cerebral edema,46,47,AU
+46,Acute kidney injury,47,48,AV
+47,Need for renal replacement therapy,48,49,AW
+48,Mechanical ventilation,49,50,AX
+49,Vasopressor requirement,50,51,AY
+50,NAC dose/duration,51,52,AZ
+51,Antiviral therapy given,52,53,BA
+52,Steroids for AIH given,53,54,BB
+53,Chelation/other Wilson treatment given,54,55,BC
+54,Antibiotics given,55,56,BD
+55,Cerebral edema treatment given,56,57,BE
+56,Plasma exchange/TPE performed,57,58,BF
+57,Transplant evaluation performed,59,60,BH
+58,Date transplant evaluation started,60,61,BI
+59,Listed for transplant,61,62,BJ
+60,Contraindication to transplant,62,63,BK
+61,Reason not listed,63,64,BL
+62,Transplant eligibility at any point,64,65,BM
+63,Transferred/referred for transplant,65,66,BN
+64,Transfer delay documented,66,67,BO
+65,Time from listing to transplant (hours),67,68,BP
+66,Received liver transplant,68,69,BQ
+67,Transplant type,69,70,BR
+68,Reason transplant not performed,70,71,BS
+69,Spontaneous/native liver survival,71,72,BT
+70,Survived without transplant,72,73,BU
+71,Death without transplant,73,74,BV
+72,Death after transplant,74,75,BW
+73,Graft survival,75,76,BX
+74,Post-transplant complications,76,77,BY
+75,Overall survival,78,79,CA
+76,30-day survival,79,80,CB
+77,90-day survival,80,81,CC
+78,Hospital survival,81,82,CD
+79,Length of hospital stay (days),82,83,CE
+80,ICU admission,83,84,CF
+81,ICU length of stay (days),84,85,CG
+82,Discharge destination,85,86,CH
+83,Readmission,86,87,CI
+84,Death occurred,87,88,CJ
+85,Date of death,88,89,CK
+86,Primary cause of death,89,90,CL
+87,Secondary cause/contributor,90,91,CM
+88,Cerebral edema/herniation,91,92,CN
+89,Sepsis/septic shock,92,93,CO
+90,Multiorgan failure,93,94,CP
+91,Cardiovascular collapse,94,95,CQ
+92,Respiratory failure,95,96,CR
+93,Hemorrhage,96,97,CS
+94,Renal failure,97,98,CT
+95,Other cause of death,98,99,CU
+96,Days from symptom onset to presentation,99,100,CV
+97,Days from presentation to ALF diagnosis,100,101,CW
+98,Days from diagnosis to transplant evaluation,101,102,CX
+99,Days from diagnosis to listing,102,103,CY
+100,Days from diagnosis to transplant,103,104,CZ
+101,Days from diagnosis to death,104,105,DA
+102,Clinical deterioration before transplant,105,106,DB
+103,Clinical improvement before transplant,106,107,DC
+104,Spontaneous recovery documented,107,108,DD
+105,Vital status at last follow-up,108,109,DE
+106,Date of last follow-up,109,110,DF
+107,King's College Criteria met,124,125,DU
+108,MELD score at presentation,125,126,DV
+109,Highest MELD score,126,127,DW
+110,MELD-Na at presentation,127,128,DX
+111,Highest MELD-Na,128,129,DY
+112,ALFSG Index (if available),129,130,DZ
+113,"PELD score at presentation (pediatric, if applicable)",130,131,EA

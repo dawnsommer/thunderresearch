@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none';">
+  <title>ThunderResearch</title>
+  <link rel="icon" href="assets/thunderresearch-mark.svg" type="image/svg+xml">
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img class="brand-mark" src="assets/thunderresearch-mark.svg" alt="" aria-hidden="true">
+      <div>
+        <h1>ThunderResearch</h1>
+        <div class="privacy-line">Local browser review · patient data stays in this browser</div>
+      </div>
+    </div>
+    <div class="top-actions">
+      <button class="btn primary" id="importJsonBtn">Import patient JSONs</button>
+      <button class="btn" id="importTxtBtn">Import source TXTs</button>
+      <button class="btn" id="importMasterBtn">Load master CSV <span class="muted">optional</span></button>
+      <button class="btn theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to dark mode">☾ Dark mode</button>
+      <div class="menu-wrap">
+        <button class="btn" id="moreBtn" aria-expanded="false">More ▾</button>
+        <div class="menu hidden" id="moreMenu">
+          <button id="exportWorkspaceBtn">Export workspace backup</button>
+          <button id="importWorkspaceBtn">Import workspace backup</button>
+          <button id="exportApprovedBtn">Export approved JSON bundle</button>
+          <button id="buildCsvBtn">Generate research CSV</button>
+          <div class="menu-sep"></div>
+          <button class="danger-text" id="clearDbBtn">Clear local database</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <input hidden type="file" id="jsonInput" accept=".json,application/json" multiple>
+  <input hidden type="file" id="txtInput" accept=".txt,text/plain" multiple>
+  <input hidden type="file" id="masterInput" accept=".csv,text/csv">
+  <input hidden type="file" id="workspaceInput" accept=".json,application/json">
+
+  <div class="statusbar" role="status" aria-live="polite">
+    <div class="status-item"><span class="dot" id="dbDot"></span><span id="dbStatus">Opening IndexedDB…</span></div>
+    <div class="status-item" id="masterStatus">Master CSV: not loaded</div>
+    <div class="status-item" id="sourceStatus">Source TXTs: 0 loaded</div>
+    <div class="status-item" id="backupStatus">Backup: never</div>
+    <div class="status-item" id="storageStatus">Storage: checking…</div>
+    <div class="status-item push" id="saveStatus">Saved</div>
+  </div>
+
+  <main class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-head">
+        <div>
+          <h2>Patients</h2>
+          <div class="small" id="cohortSummary">0 loaded</div>
+        </div>
+        <label class="sr-only" for="patientSearch">Search patients by ID</label>
+        <input class="search compact" id="patientSearch" type="search" placeholder="Search ID">
+      </div>
+      <div class="patient-filters" role="group" aria-label="Patient status filter">
+        <button class="chip active" data-patient-filter="all" aria-pressed="true" type="button">All</button>
+        <button class="chip" data-patient-filter="pending" aria-pressed="false" type="button">Pending</button>
+        <button class="chip" data-patient-filter="approved" aria-pressed="false" type="button">Approved</button>
+      </div>
+      <div class="patient-list" id="patientList">
+        <div class="empty-side">Import patient JSON files to begin.</div>
+      </div>
+    </aside>
+
+    <section class="workspace">
+      <div class="empty-main" id="emptyState">
+        <div class="empty-icon" aria-hidden="true">↥</div>
+        <h2>Load extracted patient JSONs into ThunderResearch</h2>
+        <p>Import one or many extraction JSON files. The app validates all 113 research headings before accepting a patient.</p>
+        <button class="btn primary large" id="emptyImportBtn">Import patient JSONs</button>
+        <p class="footnote">Your files are read locally with the browser File API. The app contains no analytics, APIs, or network upload code.</p>
+      </div>
+
+      <div id="patientWorkspace" class="hidden">
+        <div class="patient-header">
+          <div>
+            <div class="eyebrow" id="patientPosition">PATIENT</div>
+            <div class="patient-title-row">
+              <h2 id="patientTitle">ALF-0001</h2>
+              <span class="status-pill pending" id="patientStatePill">REVIEW PENDING</span>
+            </div>
+            <div class="patient-meta" id="patientMeta"></div>
+          </div>
+          <div class="patient-actions">
+            <button class="btn" id="openSourceBtn">Open source TXT</button>
+            <button class="btn" id="exportPatientBtn">Export patient JSON</button>
+            <button class="btn" id="historyBtn">View history</button>
+            <button class="btn resolve-reviews hidden" id="resolveReviewsBtn" type="button" title="Change every REVIEW status for this patient to OK">Mark all REVIEW as OK</button>
+            <button class="btn approve" id="approveBtn">Approve patient</button>
+            <button class="btn warning hidden" id="reopenBtn">Reopen patient</button>
+          </div>
+        </div>
+
+        <div class="review-toolbar">
+          <div class="view-chips" role="group" aria-label="Field filter">
+            <button class="chip active" data-field-filter="all" aria-pressed="true" type="button">All <span id="allCount"></span></button>
+            <button class="chip" data-field-filter="review" aria-pressed="false" type="button">Needs review <span id="reviewCount"></span></button>
+            <button class="chip" data-field-filter="calculated" aria-pressed="false" type="button">Calculated <span id="calcCount"></span></button>
+            <button class="chip" data-field-filter="missing" aria-pressed="false" type="button">NR / N/A <span id="missingCount"></span></button>
+            <button class="chip" data-field-filter="changed" aria-pressed="false" type="button">Edited <span id="changedCount"></span></button>
+          </div>
+          <div class="review-tools">
+            <label class="sr-only" for="fieldSearch">Search research headings</label>
+            <input class="search" id="fieldSearch" type="search" placeholder="Search research heading">
+            <div class="review-nav" role="group" aria-label="Review navigation">
+              <button class="btn" id="prevPatientBtn" type="button" title="Previous patient (Alt + Left Arrow)">← Patient</button>
+              <button class="btn" id="nextPatientBtn" type="button" title="Next patient (Alt + Right Arrow)">Patient →</button>
+              <button class="btn next-review" id="nextReviewBtn" type="button" title="Focus next unresolved field (Alt + Down Arrow)">Next unresolved</button>
+            </div>
+            <span class="keyboard-hint">Alt + ↓ unresolved · Alt + Shift + ↓ field</span>
+          </div>
+        </div>
+
+        <div class="validation-banner hidden" id="validationBanner" role="status" aria-live="polite"></div>
+        <div id="fieldContainer" class="field-container"></div>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="sourceDialog" class="modal source-modal" aria-labelledby="sourceDialogTitle">
+    <div class="modal-head">
+      <div>
+        <div class="eyebrow">SOURCE CONTEXT</div>
+        <h3 id="sourceDialogTitle">Source TXT</h3>
+      </div>
+      <button class="icon-btn" id="sourceCloseBtn" type="button" aria-label="Close source context">×</button>
+    </div>
+    <div class="source-tools">
+      <input class="search" id="sourceSearch" type="search" placeholder="Search loaded source text">
+      <button class="btn" id="sourceSearchBtn">Find</button>
+    </div>
+    <div class="source-context" id="sourceContext"></div>
+  </dialog>
+
+  <dialog id="messageDialog" class="modal message-modal" aria-labelledby="messageTitle">
+    <div class="modal-head">
+      <h3 id="messageTitle">Message</h3>
+      <button class="icon-btn" id="messageCloseBtn" type="button" aria-label="Close message">×</button>
+    </div>
+    <div id="messageBody" class="message-body"></div>
+  </dialog>
+
+  <dialog id="auditDialog" class="modal audit-modal" aria-labelledby="auditDialogTitle">
+    <div class="modal-head">
+      <div>
+        <div class="eyebrow">LOCAL AUDIT HISTORY</div>
+        <h3 id="auditDialogTitle">Patient history</h3>
+      </div>
+      <button class="icon-btn" id="auditCloseBtn" type="button" aria-label="Close audit history">×</button>
+    </div>
+    <div class="audit-summary small" id="auditSummary"></div>
+    <div class="audit-list" id="auditList"></div>
+  </dialog>
+
+  <div class="toast-region" id="toastRegion" aria-live="polite"></div>
+
+  <script src="js/schema.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/idb.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
